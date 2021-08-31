@@ -12,8 +12,10 @@
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js"></script>
       --%>
       <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/css/bootstrap.min.css"/>
+      <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/app.css"/>
       <script src="${pageContext.request.contextPath}/resources/jquery/jquery-3.5.1.min.js"></script>
       <script src="${pageContext.request.contextPath}/resources/bootstrap-4.6.0-dist/js/bootstrap.bundle.min.js"></script>
+      
    </head>
    <body>
       <div class="d-flex flex-column vh-100">

@@ -176,137 +176,66 @@
 				<button class="btn btn-info btn-sm" onclick="requestPost()">POST방식 요청</button>
 			</div>
 			
+       </div>
+       
 			<div class="card m-2">
 				<div class="card-header">
-					서 유효성 검사
+					서버측 유효성 검사
 				</div>
 				<div class="card-body">
-					<form method="post" action="method2">
-	                     <div class="input-group">
-	                        <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
-	                        <input type="text" name="mid" class="form-control" value="${joinForm.mid}" autocomplete="username">
-	                        <form:errors cssClass="error" path="joinForm.mid"/>
-	                     </div>
-	                     <div class="input-group">
-	                        <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
-	                        <input type="password" name="mpassword" class="form-control" value="${joinForm.mpassword}" autocomplete="current-password">
-	                        <form:errors cssClass="error" path="joinForm.mpassword"/>
-	                     </div>
-	                     <div class="input-group">
-	                        <div class="input-group-prepend"><span class="input-group-text">memail</span></div>
-	                        <input type="text" name="memail" class="form-control" value="${joinForm.memail}">
-	                        <form:errors cssClass="error" path="joinForm.memail"/>
-	                     </div>
-	                     <div class="input-group">
-	                        <div class="input-group-prepend"><span class="input-group-text">mtel</span></div>
-	                        <input type="text" name="mtel" class="form-control" value="${joinForm.mtel}">
-	                        <form:errors cssClass="error" path="joinForm.mtel"/>
-	                     </div>
-	                     <input class="btn btn-info" type="submit" value="가입"/>
-	                 </form>
-				</div>
-         </div>
-       </div>
-</div>
-		<script>
-			function requestGet(){
-				const param1 = $("#param1").val(); // 주민번호 regix xxxxxx-xxxxxxx
-				const param2 = $("#param2").val(); // 년월일 네 자리 연도 두자리월 두자리 
-				const param3 = $("#param3").val(); // 패스워드는 반드시 알파벳으로 시작하고 최소 8자 최대 10자 ㅡ 
-				const param4 = $("#form1 input[name=param4]:checked").val();
-				const param5 = $("#param5").val();
+					<div class="card m-2">
+						<div class="card-header">
+							회원가입 폼 
+						</div>
+						<div class="card-body">
+							<form method="post" action="join">
+			                     <div class="input-group">
+			                        <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
+			                        <input type="text" name="mid" class="form-control" value="${joinForm.mid}" autocomplete="username">
+			                        <form:errors cssClass="text-danger" path="joinForm.mid"/>
+			                     </div>
+			                     <div class="input-group">
+			                        <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
+			                        <input type="password" name="mpassword" class="form-control" value="${joinForm.mpassword}" autocomplete="current-password">
+			                        <form:errors cssClass="text-danger" path="joinForm.mpassword"/>
+			                     </div>
+			                     <div class="input-group">
+			                        <div class="input-group-prepend"><span class="input-group-text">memail</span></div>
+			                        <input type="text" name="memail" class="form-control" value="${joinForm.memail}">
+			                        <form:errors cssClass="text-danger" path="joinForm.memail"/>
+			                     </div>
+			                     <div class="input-group">
+			                        <div class="input-group-prepend"><span class="input-group-text">mtel</span></div>
+			                        <input type="text" name="mtel" class="form-control" value="${joinForm.mtel}">
+			                        <form:errors cssClass="text-danger" path="joinForm.mtel"/>
+			                     </div>
+			                     <input class="btn btn-info" type="submit" value="가입"/>
+		                 	</form>
+						</div>
+					</div>
 				
-				console.log(param1);
-				console.log(param2);
-				console.log(param3);
-				console.log(param4);
-				console.log(param5);
-				
-				$.ajax({
-					url:"method1",
-					method:"get",
-					//data:"method1?param1=문자열&param2=5&param3=3.14&param4=true&param5=2021-08-27";
-					data: {
-						// 속성이름과 변수이름이 같으면 생략 가능하다!!!    
-						param1,
-						param2, 
-						param3, 
-						param4, 
-						param5
-					}
-				})
-				.done(()=>{});
-			
-				
-			}
-			
-			function requestPost(){
-				
-				const param1 = document.form1.param1.value;
-				const param2 = document.querySelector("#param2").value;
-				const param3 = $("#param3").val();
-				const param4 = $("#form1 input[name=param4]:checked").val();
-				const param5 = $("#param5").val();
-				
-				
-	
-				const param1Error = $("#form1 .param1-error");
-				param1Error.html("");  
-				let checkDate = true;
-				if(param1===""){
-					param1Error.html("필수입력사항"); 
-					checkResult = false;
-				}else{
-					const pattern = /^\d{2}([0]\d|[1][0-2])([0][1-9]|[1-2]\d|[3][0-1])[-]*[1-4][0-9]{6}$/;
-					const result = pattern.test(param1);
-					if(!result){
-						param1Error.html("주민번호형식이 아님");  
-						checkResult = false;
-
-					}
-				}
-				
-				/*
-				const pattern = /((19|20)[0-9]{2}([0-2][0-9]|3[0-1]))/;
-				const result = pattern.test("21970103");
-				console.log(result);
-				
-				let param2 = form.param2.value;
-				const param2Error = $("#form1 .param1-error");
-				param2Error.innerHTML = "";  
-				*/
-				/*
-				if(param1===""){
-					param1Error.innerHTML = "필수 입력 사항";  
-					checkResult = false;
-				}else{
-					const pattern = /([0-9]{6}-[1-4][0-9]{6})/i;
-					const result = pattern.test("970103-5953617");
-					if(!result){
-						const param1Error = document.querySelector("#form0 .param1-error");
-						console.log(param1Error);
-						param1Error.innerHTML = "주민등록번호 형식에 맞지 않";  
-
-					}
-				}
-				*/
-				if(checkData){
-					$.ajax({
-						url:"method2",
-						method:"post",
-						data: {
-							// 속성이름과 변수이름이 같으면 생략 가능하다!!!    
-							param1,
-							param2, 
-							param3, 
-							param4, 
-							param5
-						}
-					})
-					.done(()=>{});
-				}
-				
-			}
-		</script>
+					<div class="card m-2">
+						<div class="card-header">
+							로그인 
+						</div>
+							 
+						<div class="card-body">
+							<form method="post" action="login">
+		                     <div class="input-group">
+		                        <div class="input-group-prepend"><span class="input-group-text">mid</span></div>
+		                        <input type="text" name="mid" class="form-control" value="${loginForm.mid}">
+		                        <form:errors cssClass="text-danger" path="loginForm.mid"/>
+		                     </div>
+		                     <div class="input-group">
+		                        <div class="input-group-prepend"><span class="input-group-text">mpassword</span></div>
+		                        <input type="password" name="mpassword" class="form-control" value="${loginForm.mpassword}">
+		                        <form:errors cssClass="text-danger" path="loginForm.mpassword"/>
+		                     </div>
+		                     <input class="btn btn-info" type="submit" value="로그인"/>
+		                  </form>
+						</div>
+					</div>
+         		</div>
+         	</div>
 </div>
 <%@ include file ="/WEB-INF/views/common/footer.jsp"%>
