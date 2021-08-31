@@ -119,6 +119,7 @@
                         </div>
                         <input class="mt-2 btn btn-info btn-sm" value="요청"/>
               	</form>
+           </div>
 			<div class="card-body">
 				<button class="btn btn-info btn-sm" onclick="requestGet()">GET방식 요청</button>
 				<button class="btn btn-info btn-sm" onclick="requestPost()">POST방식 요청</button>

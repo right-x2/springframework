@@ -6,6 +6,7 @@
 		프로젝트 생성 및 실행  
 	</div>
 	<div class="card-body">
+		<img alt="" src="${pageContext.request.contextPath}/resources/images/logo-spring.png" width="200px;">
 		1. STS 설치</br>
 		2. 플러그인 설치</br>
 		3. 프로젝트 생성</br>
