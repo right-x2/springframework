@@ -55,7 +55,7 @@
 				<form method="POST"  action="method2">
                         <div class="input-group">
                            <div class="input-group-prepend"><span class="input-group-text">param1</span></div>
-                           <input type="text" class="form-control" value="문자열">
+                           <input type="text"  name="param1" class="form-control" value="문자열">
                         </div>
                         <div class="input-group">
                            <div class="input-group-prepend"><span class="input-group-text">param2</span></div>
