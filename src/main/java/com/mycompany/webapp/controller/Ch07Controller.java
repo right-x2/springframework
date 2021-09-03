@@ -105,7 +105,7 @@ public class Ch07Controller {
 	}
 	
 	
-	// 요즘 사용하는 방
+	// 요즘 사용하는 방법
 	@GetMapping("/objectSaveAndRead3")
 	public String objectSaveAndRead3(Model model) {
 		logger.info("실행");
