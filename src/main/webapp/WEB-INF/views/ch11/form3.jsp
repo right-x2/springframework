@@ -10,10 +10,10 @@
 	<%-- 
 		<form>
 			<c:forEach var="language" items= "${languageList}" varStatus="status">
-				<div class="form-check form-check-inline">
+				<div class="form-check form-check-inline ml-2">
 				  <input class="form-check-input" type="checkBox" id="lang${status.count}" name="mLanguage" value="${language}"
 				  	<c:forEach var="temp" items="${member.mlanguage}">
-				  		<c:if test="${temp==language}"></c:if>
+				  		<c:if test="${temp==language}">checked</c:if>
 				  	</c:forEach>
 				  	>
 				  <label class="form-check-label" for="lang${status.count}">${language}</label>
@@ -21,11 +21,17 @@
 			</c:forEach>
 				
 		</form>
-	--%>
+--%>
 		<form:form modelAttribute="member">
 			<div class="form-check form-check-inline">
 				<form:checkboxes items="${languageList}" path="mlanguage" class="ml-2 mr-1"></form:checkboxes>
+				<button type="submit" class="btn btn-primary">제출</button>
 			</div>
+			<div class="form-check form-check-inline">
+				<form:checkboxes items="${skillList}" path="mskill" itmeValue="code" itemLabel="label" class="ml-2 mr-1"></form:checkboxes>
+				<button type="submit" class="btn btn-primary">제출</button>
+			</div>
+			
 		</form:form>
 	</div>
 </div>
