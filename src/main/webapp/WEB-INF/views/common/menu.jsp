@@ -19,33 +19,33 @@
     
     <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch04.</span><a class="text-white" href="${pageContext.request.contextPath}/ch04/content">유효성 검사</a>
+       		<span class="mr-2">Ch04.</span><a class="text-white" href="${pageContext.request.contextPath}/ch04/content">Controller/유효성 검사</a>
         </h6> 
     </li>
     
     <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch05.</span><a class="text-white" href="${pageContext.request.contextPath}/ch05/content">Header & Cookie</a>
+       		<span class="mr-2">Ch05.</span><a class="text-white" href="${pageContext.request.contextPath}/ch05/content">Controller/Header & Cookie</a>
         </h6> 
     </li>
     
     <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch06.</span><a class="text-white" href="${pageContext.request.contextPath}/ch06/content">Forward & Redirect</a>
-        </h6> 
-    </li>
-    
-    
-    <li class="nav-item mb-2">
-      	<h6 class="text-white">
-       		<span class="mr-2">Ch07.</span><a class="text-white" href="${pageContext.request.contextPath}/ch07/content">Data Delivery</a>
+       		<span class="mr-2">Ch06.</span><a class="text-white" href="${pageContext.request.contextPath}/ch06/content">Controller/Forward & Redirect</a>
         </h6> 
     </li>
     
     
     <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch08.</span><a class="text-white" href="${pageContext.request.contextPath}/ch08/content">Session support</a>
+       		<span class="mr-2">Ch07.</span><a class="text-white" href="${pageContext.request.contextPath}/ch07/content">Controller/Data Delivery</a>
+        </h6> 
+    </li>
+    
+    
+    <li class="nav-item mb-2">
+      	<h6 class="text-white">
+       		<span class="mr-2">Ch08.</span><a class="text-white" href="${pageContext.request.contextPath}/ch08/content">Controller/Session support</a>
         </h6> 
     </li>
     
@@ -53,13 +53,13 @@
     
      <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch09.</span><a class="text-white" href="${pageContext.request.contextPath}/ch09/content">FileUpload & FileDownload</a>
+       		<span class="mr-2">Ch09.</span><a class="text-white" href="${pageContext.request.contextPath}/ch09/content">Controller/FileUpload & FileDownload</a>
         </h6> 
     </li>
     
       <li class="nav-item mb-2">
       	<h6 class="text-white">
-       		<span class="mr-2">Ch10.</span><a class="text-white" href="${pageContext.request.contextPath}/ch10/content">Exception</a>
+       		<span class="mr-2">Ch10.</span><a class="text-white" href="${pageContext.request.contextPath}/ch10/content">Controller/Exception</a>
         </h6> 
     </li>
     
@@ -73,6 +73,13 @@
     <li class="nav-item mb-2">
       	<h6 class="text-white">
        		<span class="mr-2">Ch12.</span><a class="text-white" href="${pageContext.request.contextPath}/ch12/content">View/BeanNameViewResolver</a>
+        </h6> 
+    </li>
+    
+    
+    <li class="nav-item mb-2">
+      	<h6 class="text-white">
+       		<span class="mr-2">Ch13.</span><a class="text-white" href="${pageContext.request.contextPath}/ch13/content">DI(Dependency Injection)</a>
         </h6> 
     </li>
 </ul>
