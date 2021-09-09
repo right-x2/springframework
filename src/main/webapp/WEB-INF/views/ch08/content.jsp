@@ -135,7 +135,7 @@
 							//data = {result:"wrongMid"}
 							//data = {result:"wrongMpassword"}
 							
-							
+							console.log(data);
 							if(data.result==="success"){
 								// data = {} 
 								// 현재 페이지 전채를 다시 서버에서 받아오도록 함

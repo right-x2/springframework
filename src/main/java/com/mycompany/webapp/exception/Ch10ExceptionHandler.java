@@ -33,7 +33,7 @@ public class Ch10ExceptionHandler {
 	@ExceptionHandler
 	public String handleClassCastException(ClassCastException e) {
 		e.printStackTrace();
-		logger.info("실행");
+		logger.info("실행	");
 		return "error/500_cast";
 	}	
 	

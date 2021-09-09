@@ -60,10 +60,21 @@ public class Ch12FileDownloadView extends AbstractView {
 
 		// 입력스트림 -> 출력스트림
 
-		FileCopyUtils.copy(is, os); // 파일사이즈가 커져도 무리가 없다. -> 1메가씩 읽고 출력하기 때문에 메모리를 많이 차지하지 않는다.
-		is.close();
-		os.flush();
+		//FileCopyUtils.copy(is, os); // 파일사이즈가 커져도 무리가 없다. -> 1메가씩 읽고 출력하기 때문에 메모리를 많이 차지하지 않는다.
+		// 바이트의 길이를 줄 수 없다.
+		
+		byte[] data = new byte[1024];
+		int readByteNum = -1;
+		while(true) {
+			readByteNum = is.read(data);
+			if(readByteNum==-1)
+				break;
+			os.write(data,0,readByteNum);
+			os.flush();
+		}
+		
 		os.close();
+		is.close();
 	}
 
 }

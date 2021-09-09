@@ -12,6 +12,7 @@ public class Ch13Service6 {
 	private int  prop1;
 	private double prop2;
 	private boolean prop3;
+	@Value("${service.prop4}")
 	private String prop4;
 	
 	

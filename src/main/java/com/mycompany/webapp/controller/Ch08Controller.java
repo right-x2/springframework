@@ -1,6 +1,10 @@
 package com.mycompany.webapp.controller;
 
+import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
@@ -120,19 +124,39 @@ public class Ch08Controller {
 		return json;
 	}
 	
+	/*
 	@GetMapping(value="/logoutAjax",produces = "Application/json; charset=UTF-8")
 	@ResponseBody
 	public String logoutAjax(String mid, String mpassword,HttpSession session) {
 		logger.info("실행");
 		
 		
-		session.invalidate();
-		
+		//session.invalidate();
+		session.removeAttribute("sessionMid");
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put("result", "success");
 		String json = jsonObject.toString();
 		
 		return json;
+	}
+	*/
+	
+	@GetMapping("/logoutAjax")
+	public void logoutAjax(HttpServletResponse response,HttpSession session) throws IOException {
+		logger.info("실행");
+		
+		
+		session.invalidate();
+		//session.removeAttribute("sessionMid");
+		
+		response.setContentType("Application/json; charset=UTF-8");
+		PrintWriter pw = response.getWriter();
+		JSONObject jsonObject = new JSONObject();
+		jsonObject.put("result", "success");
+		String json = jsonObject.toString();
+		pw.print(json);
+		//pw.flush();
+		//pw.close();
 	}
 	
 	// 세션에 inputForm이름이 존재하지 않을 때 딱 한번 실행된다.
