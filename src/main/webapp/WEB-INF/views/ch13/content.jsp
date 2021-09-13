@@ -12,8 +12,8 @@
 				XML방식과 어노테이션 방식으로 주입
 			</div>
 			<div class="card-body">
-				<a href="request1" class="btn btn-info btn-sm">reqeust1</a>
-				<a href="request2" class="btn btn-info btn-sm">reqeust2</a>				
+				<a href="request1" class="btn btn-info btn-sm">request1</a>
+				<a href="request2" class="btn btn-info btn-sm">request2</a>				
 			</div>
 		</div>
 		<hr>
@@ -22,7 +22,7 @@
 				타입에 의한 주입과 이름에 의한 주입
 			</div>
 			<div class="card-body">
-				<a href="request3" class="btn btn-info btn-sm">reqeust3</a>				
+				<a href="request3" class="btn btn-info btn-sm">request3</a>				
 			</div>
 		</div>
 	</div>

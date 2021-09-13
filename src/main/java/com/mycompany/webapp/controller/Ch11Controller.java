@@ -22,7 +22,7 @@ import com.mycompany.webapp.exception.Ch10ExceptionHandler;
 @RequestMapping("/ch11")
 public class Ch11Controller {
 
-	private static final Logger logger = LoggerFactory.getLogger(Ch10ExceptionHandler.class);
+	private static final Logger logger = LoggerFactory.getLogger(Ch11Controller.class);
 	
 	@RequestMapping("/content")
 	public String content() {
