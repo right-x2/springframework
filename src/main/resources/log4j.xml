@@ -19,6 +19,11 @@
 		<level value="info" />
 	</logger>
 	
+	
+	<logger name="jdbc.sqltiming">
+		<level value="info" />
+	</logger>
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="warn" />
