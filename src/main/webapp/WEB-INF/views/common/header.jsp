@@ -41,7 +41,7 @@
                   	<!--  
                      <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/ch08/logout">로그아웃</a>
                      -->
-                     <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/ch15/login">로그아웃</a>
+                     <a class="btn btn-success btn-sm" href="${pageContext.request.contextPath}/ch15/logout">로그아웃</a>
                   </c:if>
                </div>
             </div>

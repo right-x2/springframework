@@ -16,5 +16,6 @@
 		<property name="transactionManager" ref="transactionManager"/>
 	</bean>
 	
+	<!-- 선언적 방법 -->
 	<tx:annotation-driven transaction-manager="transactionManager"/>
 </beans>

@@ -9,6 +9,11 @@
 			<div class="card-header">계좌 현황</div>
 			<div class="card-body">
 				<table style="width: auto" class="table table-sm table-bordered">
+					<c:if test="${transferError != null}">
+						<div class="alert alert-danger mb-2" role="alert">
+						  	${transferError}
+						</div>
+					</c:if>
 					<tr>
 						<th style="width: 50px">번호</th>
 						<th style="width: 100px">소유주</th>
