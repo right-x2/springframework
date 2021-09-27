@@ -16,17 +16,26 @@
 			username-parameter="mid"
 			password-parameter="mpassword"
 			login-processing-url="/login"
-			always-use-default-target="true"
-			default-target-url="/ch17/content"
-			authentication-failure-url="/ch17/loginForm"
+			authentication-success-handler-ref="authenticationSuccessHandler"
+			authentication-failure-handler-ref="authenticationFailureHandler"
 		/>
 		<!-- 로그아웃 설정 -->
+		<!-- 
 		<security:logout 
 			logout-url="/logout"
 			logout-success-url="/ch17/content"
 		/>
+		
+		
+		-->
+		
+		<security:logout 
+			logout-url="/logout"
+			success-handler-ref="LogoutSuccessHandler"
+		/>
 		<!-- 사이트간 요청 위조 방지 비활성화 -->
-		<security:csrf disabled="true"/>
+		<!-- logout도 post 방식으로 요청해야 함 (_csrf 토큰을 전달해야 한다) -->
+		<security:csrf disabled="false"/>
 		
 		<!-- 요청 URL 권한 설정 -->
 		<security:intercept-url pattern="/ch17/admin*" access="hasRole('ROLE_ADMIN')"/>
@@ -38,6 +47,28 @@
 		<!-- 권한 없음일 경우 보여줄 페이지 설정 -->
 		<security:access-denied-handler error-page="/ch17/error403"/>
 		
+		<!-- 로그인 중복 방지를 위한 설정 -->
+		<security:session-management>
+			<!-- 
+				max-sessions: 최대 로그인 수 
+				error-if-maximum-exceeded="true": max-session을 초과했을 경우 에러를 발생시키겠다는 
+				이전 로그인을 유효하게 하고 다른 로그인은 에러처리 
+				
+				expired-url: 인증이 무효화된 사용자가 이동하는 페이지
+			 -->
+			 <!-- 이전 로그인을 유효하게 만들기 -->
+			 <!-- 
+			 
+			<security:concurrency-control max-sessions="1"
+										error-if-maximum-exceeded="true"/>
+			 -->
+			 
+			 <!-- 최종 로그인을 유효하게 만들기 -->
+			 
+			 <security:concurrency-control max-sessions="1"
+										error-if-maximum-exceeded="false"
+										expired-url="/ch17/loginForm"/>
+		</security:session-management>
 	</security:http>
 	<!-- 권한 계층 설정 -->
 	<bean id="roleHierarchyImpl" class="org.springframework.security.access.hierarchicalroles.RoleHierarchyImpl">
@@ -70,4 +101,19 @@
 								data-source-ref="dataSource"
 								users-by-username-query="SELECT mid, mpassword, menabled FROM member WHERE mid=?"
 								authorities-by-username-query="SELECT mid, mrole FROM member WHERE mid=?"/>
+	
+	<!-- 인증 성공 또는 실패시 실행되는 핸들러 객체 실향  -->
+	
+	<!-- 리다이렉트로 이동할 경로를 value값으로 지정한다. -->
+	<bean id="authenticationSuccessHandler" class="com.mycompany.webapp.security.Ch17AuthenticationSuccessHandler">
+		<property name="alwaysUseDefaultTargetUrl" value="false"></property>
+		<property name="defaultTargetUrl" value="/ch16/content"></property>
+	</bean>
+	<bean id="authenticationFailureHandler" class="com.mycompany.webapp.security.Ch17AuthenticationFailureHandler">
+		<property name="defaultFailureUrl" value="/ch17/loginForm"></property>
+	</bean>
+	
+	<bean id="LogoutSuccessHandler" class="com.mycompany.webapp.security.Ch17LogoutSuccessHandler">
+		<property name="defaultTargetUrl" value="/ch17/content"></property>
+	</bean>
 </beans>

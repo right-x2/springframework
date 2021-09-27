@@ -14,6 +14,7 @@ import org.springframework.transaction.support.TransactionTemplate;
 
 import com.mycompany.webapp.dao.Ch16AccountDao;
 import com.mycompany.webapp.dto.Ch16Account;
+import com.mycompany.webapp.exception.Ch16NotEnoughBalanceException;
 import com.mycompany.webapp.exception.Ch16NotFoundAccountException;
 
 @Service
@@ -67,19 +68,16 @@ public class Ch16AccountService {
 				}catch (Exception e) {
 					// 트랜잭션 작업을 모두 취소
 					status.setRollbackOnly();
+					//logger.info("예외 발생 ----------------");
 					return e.getMessage();
 				}
 			}
 		});
 		
-		if(result.equals("success")) {
-			return TransferResult.SUCCESS;
-			
-		}else if(result.equals("notEnough")){
-			
-			// 다음과 같이 반드시 예외를 던져야 한다.
-			//logger.info("예외가 발생했음");
+		if(result ==null) {
 			return TransferResult.FAIL_NOT_FOUND_ACCOUNT;
+		}else if(result=="successs"){
+			return TransferResult.SUCCESS;
 		}else {
 			return TransferResult.FAIL_NOT_ENOUGH_BALANCE;
 		}
@@ -99,6 +97,10 @@ public class Ch16AccountService {
 			fromAccount.setBalance(fromAccount.getBalance()-amount);
 			accountDao.updateBalance(fromAccount);
 			
+			
+			if(fromAccount.getBalance()<amount) {
+				 throw new Ch16NotEnoughBalanceException("notEnough");
+			}
 
 			Ch16Account toAccount = accountDao.selectByAno(toAno);
 			toAccount.setBalance(toAccount.getBalance()+amount);

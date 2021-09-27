@@ -165,7 +165,7 @@ public class Ch14Controller {
 	
 	
 	@PostMapping("/join")
-	public String join(@Valid Ch14Member member,Model model) {
+	public String join(Ch14Member member,Model model) {
 		// 서버측에서 객체의 데이터를 보충할 때
 		member.setMenabled(1);
 		member.setMrole("ROLE_USER");

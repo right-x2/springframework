@@ -9,6 +9,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mycompany.webapp.dto.Ch16Account;
@@ -32,17 +33,20 @@ public class Ch16Controller {
 		return "ch16/content";
 	}
 	
-	@RequestMapping("/transaction1")
+	@PostMapping("/transaction1")
 	public String transaction1(int fromAno, int toAno, int amount,HttpSession session){
+		logger.info("실행");
 		session.removeAttribute("transferError");
 		TransferResult result =  accountService.transfer1(fromAno, toAno, amount);
 		if(result == TransferResult.FAIL_NOT_FOUND_ACCOUNT) {
 			session.setAttribute("transferError", "계좌가 존재하지 않습니다.");
+		}else if(result == TransferResult.FAIL_NOT_ENOUGH_BALANCE) {
+			session.setAttribute("transferError", "계좌의 잔금이 부족합니다.");
 		}
 		return "redirect:/ch16/content";
 	}
 	
-	@RequestMapping("/transaction2")
+	@PostMapping("/transaction2")
 	public String transaction2(int fromAno, int toAno, int amount){
 		accountService.transfer2(fromAno, toAno, amount);
 		return "redirect:/ch16/content";
